@@ -2,24 +2,25 @@
 #include "CodeStructure.h"
 using namespace uho;
 
-static Settings      settings;
-static CodeStructure structure;
-
 int main(int argc, char** argv)
 {
+    Settings settings;
     if (!settings.load("optimizer.cfg"))
         return -1;
 
     clock_t t = clock();
 
-    if (!folder_exists(settings.outputPath)) {
+    if (!folder_exists(settings.outputPath)) 
+    {
         printf("Creating dir '%s'\n", settings.outputPath.c_str());
-        if (!create_folder(settings.outputPath)) {
+        if (!create_folder(settings.outputPath)) 
+        {
             fprintf(stderr, "Failed to create output path!\n");
             return -1;
         }
     }
 
+    CodeStructure structure;
     printf("Collecting source files...");
     structure.recursiveSearch(settings.sourceRoot);
     printf("\nFound:\n");

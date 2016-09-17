@@ -3,3 +3,4 @@
 *.iobj
 *.ipdb
 obj/
+*.opendb
